@@ -1,0 +1,43 @@
+<kendo-grid 
+  [data]="gridView" 
+  [pageable]="true"
+  [pageSize]="10" 
+  [skip]="gridState.skip"
+  (pageChange)="pageChange($event)"
+  [height]="600"
+  (edit)="editHandler($event)" (cancel)="cancelHandler($event)"
+  (save)="saveHandler($event)" (remove)="removeHandler($event)"
+>
+    <ng-template kendoGridToolbarTemplate>
+      <input type="file" mat-button color="primary" (change)="selectFile($event.target.files)">
+      <button mat-flat-button color="primary" (click)="uploadFile()">Upload</button>
+    </ng-template>
+    <kendo-grid-column field="id" title="ID" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="firstName" editor="string" title="First Name">
+    </kendo-grid-column>
+    <kendo-grid-column field="middleName" title="Middle Name">
+    </kendo-grid-column>
+    <kendo-grid-column field="lastName" title="Last name">
+    </kendo-grid-column>
+    <kendo-grid-column field="email" title="Email" width="200">
+    </kendo-grid-column>
+    <kendo-grid-column field="dob" title="Date of Birth" editor="date">
+    </kendo-grid-column>
+    <kendo-grid-column field="age" title="Age">
+    </kendo-grid-column>
+    <kendo-grid-column field="" title="Actions" width="150">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <section>
+          <div class="example-button-row">
+            <div class="example-flex-container">
+              <button kendoGridEditCommand mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button>
+              <button kendoGridRemoveCommand mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
+              <button kendoGridSaveCommand mat-mini-fab color="accent" [disabled]="formGroup?.invalid"><mat-icon>done</mat-icon></button>
+              <button kendoGridCancelCommand mat-mini-fab color="warn"><mat-icon>cancel</mat-icon></button>
+            </div>
+          </div>
+        </section>
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid>
