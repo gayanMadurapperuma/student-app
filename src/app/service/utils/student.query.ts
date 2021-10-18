@@ -21,6 +21,7 @@ export const UPDATE_STUDENT = gql`
             firstName,
             email,
             middleName,
+            lastName,
             dob,
             age
         }

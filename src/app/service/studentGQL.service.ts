@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Apollo, gql} from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Student } from '../model/student';
@@ -6,6 +7,7 @@ import { StudentUpdate } from '../model/student.update';
 import { AllStudentGQL } from './gql/allStudentGQL';
 import { UpStudentGQL } from './gql/updateStudentGQL';
 import { RemoveStudentGQL } from './gql/removeStudentGQL';
+import { UPDATE_STUDENT } from './utils/student.query';
 
 @Injectable()
 export class StudentGQLService {
